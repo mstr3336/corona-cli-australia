@@ -6,11 +6,9 @@ _json_yesterday() {
   
   local country="${1:-australia}"
   local request=\
-"https://api.covid19api.com/country/$country/status/confirmed"
+"https://api.covid19api.com/country/$country/status/confirmed/live"
   
   request="${request}?from=${dttm_start}&to=${dttm_final}"
-  
-  echo "$request" > request.url
   
   curl --location --request GET "${request}"
 }
