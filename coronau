@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+_query_yesterday() {
+  local dttm_start="$(date -ud "12:00am 2 days ago" +"%Y-%m-%dT%H:%M:%SZ")"
+  local dttm_final="$(date -ud "12:00am today" +"%Y-%m-%dT%H:%M:%SZ")"
+  
+  local country="${1:-australia}"
+  local request=\
+"https://api.covid19api.com/country/$country/status/confirmed"
+  
+  request="${request}?from=${dttm_start}&to=${dttm_final}"
+  
+  echo "$request" > request.url
+  
+  curl --location --request GET "${request}"
+}
+
+"$@"
