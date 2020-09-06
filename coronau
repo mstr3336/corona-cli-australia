@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-_query_yesterday() {
+_json_yesterday() {
   local dttm_start="$(date -ud "12:00am 2 days ago" +"%Y-%m-%dT%H:%M:%SZ")"
   local dttm_final="$(date -ud "12:00am today" +"%Y-%m-%dT%H:%M:%SZ")"
   
